@@ -11,6 +11,10 @@ void main(){
 		if(c==EOF)break;
 		switch(c){
 			case ' ':case '\n':case '\r': break;//skip spaces
+			case '@':{
+				char position = aton(getc(file));
+				fseek(file, position, SEEK_SET);
+				}break;
 			case '+':{
 				char src1_index = getc(file);
 				char src1_value = aton(storage[src1_index]);
