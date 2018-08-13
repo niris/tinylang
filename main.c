@@ -11,6 +11,13 @@ void main(){
 		if(c==EOF)break;
 		switch(c){
 			case ' ':case '\n':case '\r': break;//skip spaces
+			case '?':{
+				char index = getc(file);
+				char big = aton(getc(file));
+				char little = aton(getc(file));
+				if(storage[index] == '0')
+					fseek(file, big*10 + little, SEEK_SET);
+				}break;
 			case '@':{
 				char big = aton(getc(file));
 				char little = aton(getc(file));
@@ -23,6 +30,14 @@ void main(){
 				char src2_value = aton(storage[src2_index]);
 				char dest_index = getc(file);
 				storage[dest_index] = ntoa(src1_value + src2_value);
+				}break;
+			case '-':{
+				char src1_index = getc(file);
+				char src1_value = aton(storage[src1_index]);
+				char src2_index = getc(file);
+				char src2_value = aton(storage[src2_index]);
+				char dest_index = getc(file);
+				storage[dest_index] = ntoa(src1_value - src2_value);
 				}break;
 			case 's':{
 				char index = getc(file);
