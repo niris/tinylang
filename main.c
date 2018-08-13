@@ -12,8 +12,9 @@ void main(){
 		switch(c){
 			case ' ':case '\n':case '\r': break;//skip spaces
 			case '@':{
-				char position = aton(getc(file));
-				fseek(file, position, SEEK_SET);
+				char big = aton(getc(file));
+				char little = aton(getc(file));
+				fseek(file, big*10 + little, SEEK_SET);
 				}break;
 			case '+':{
 				char src1_index = getc(file);
